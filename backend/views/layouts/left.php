@@ -15,6 +15,7 @@
             </div>
         </div>
 
+        <?php if(false):?>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -26,14 +27,32 @@
             </div>
         </form>
         <!-- /.search form -->
+        <?php endif; ?>
 
-        <?= \yii\widgets\Menu::widget(
+        <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Main Menu', 'options' => ['class' => 'header']],
-                    ['label' => 'Home', 'icon' => 'fa fa-home', 'url' => ['/site/index']],
-                    ['label' => 'Change Password', 'icon' => 'fa fa-lock', 'url' => ['/profile/change-password']],
+                    ['label' => 'Main menu', 'options' => ['class' => 'header']],
+                    ['label' => 'Home', 'icon' => 'fa fa-file-code-o', 'url' => ['site/index']],
+                    ['label' => 'Site management', 'options' => ['class' => 'header']],
+                    [
+                        'label' => 'Content',
+                        'icon' => 'fa fa-folder-open',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Service', 'icon' => 'fa fa-paw', 'url' => ['/service/index'],],
+                            ['label' => 'Project', 'icon' => 'fa fa-briefcase', 'url' => ['/project/index'],],
+                            ['label' => 'About', 'icon' => 'fa fa-clock-o', 'url' => ['/about/index'],],
+                            ['label' => 'Team', 'icon' => 'fa fa-users', 'url' => ['/team/index'],],
+                            ['label' => 'Clients', 'icon' => 'fa fa-smile-o', 'url' => ['/client/index'],],
+                        ],
+                    ],
+                    ['label' => 'Settings', 'icon' => 'fa fa-cogs', 'url' => ['block-settings/index']],
+                    ['label' => 'Static pages', 'icon' => 'fa fa-file-o', 'url' => ['/debug']],
+                    ['label' => 'User settings', 'options' => ['class' => 'header']],
+                    ['label' => 'Change password', 'icon' => 'fa fa-lock', 'url' => ['/profile/change-password']],
+
                 ],
             ]
         ) ?>
