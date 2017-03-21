@@ -36,6 +36,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'view'=>[
+            'theme'=>[
+                'pathMap'=>[
+                    '@app/views'=>'@app/themes/agency'
+                ]
+            ]
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

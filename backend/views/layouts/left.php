@@ -52,7 +52,6 @@
                     ['label' => 'Static pages', 'icon' => 'fa fa-file-o', 'url' => ['/debug']],
                     ['label' => 'User settings', 'options' => ['class' => 'header']],
                     ['label' => 'Change password', 'icon' => 'fa fa-lock', 'url' => ['/profile/change-password']],
-
                 ],
             ]
         ) ?>
