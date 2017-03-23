@@ -24,6 +24,7 @@ class ModelPositionBehavior extends Behavior
     {
         return [
             ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete',
+            ActiveRecord::EVENT_AFTER_INSERT => 'afterInsert',
         ];
     }
 
@@ -53,20 +54,6 @@ class ModelPositionBehavior extends Behavior
         return $this->owner->position == $this->owner->find()->count();
     }
 
-    /**
-     * @return int
-     */
-    public function updatePositions()
-    {
-        // TODO: fix this
-        $list = $this->owner->find()->orderBy('position')->all();
-
-        $i = 1;
-        foreach ($list as $item) {
-            $item->updateAttributes(['position' => $i]);
-            $i++;
-        }
-    }
 
     /**
      * @param $event
@@ -79,11 +66,21 @@ class ModelPositionBehavior extends Behavior
             throw new UnknownPropertyException ("Property not found");
         }
 
-        if (!is_callable($this->owner,'updatePositions')){
-            throw new UnknownMethodException("Method not found");
-        }
+        // TODO: fix this
+        $list = $this->owner->find()->orderBy('position')->all();
 
-        $this->model->updatePositions();
+        $i = 1;
+        foreach ($list as $item) {
+            $item->updateAttributes(['position' => $i]);
+            $i++;
+        }
+    }
+
+
+    public function afterInsert($event)
+    {
+        $this->owner->position = $this->owner->find()->count();
+        $this->owner->save();
     }
 
     /**

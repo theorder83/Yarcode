@@ -87,8 +87,6 @@ class ServiceController extends Controller
         $model = new Service();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->position = Service::find()->count()+1;
-            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

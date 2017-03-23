@@ -20,7 +20,9 @@
         "kartik-v/yii2-widget-growl": "^1.1",
         "yarcode/yii2-fa": "^1.0",
         "dmstr/yii2-adminlte-asset": "2.*",
-        "sjaakp/yii2-symbol-picker": "*"
+        "sjaakp/yii2-symbol-picker": "*",
+        "costa-rico/yii2-images": "dev-master",
+        "yiisoft/yii2-imagine": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

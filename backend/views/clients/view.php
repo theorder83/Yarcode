@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Service */
+/* @var $model common\models\Clients */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Services', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Clients', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="service-view">
+<div class="clients-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -28,25 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'id',
             'name',
-            'description:ntext',
+            'link',
             [
-                'attribute' => 'icon',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    return Html::tag('i', '', [
-                        'class' => "fa {$model->icon}",
-                        'aria-hidden' => 'true',
-                    ]);
-                }
-            ],
-            //'position',
-            //'visible',
-            //'datetime',
-
+                'attribute' => 'Image',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img($data->getImageUrl());
+                },
+            ]
         ],
-
     ]) ?>
 
 </div>

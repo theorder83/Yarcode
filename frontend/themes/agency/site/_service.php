@@ -4,19 +4,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <?php
-                    /** @var  $blocks \yii\db\ActiveQuery */
-                    /** @var  $settings \backend\models\BlockSettings */
-                    $settings = $blocks->where(['name'=>'Service'])->one();
 
-                    ?>
-                    <?php if (isset($settings) && trim($settings->head)!=""): ?>
-                        <h2 class="section-heading"><?= $settings->head ?></h2>
-                    <?php endif; ?>
+                    <h2 class="section-heading">Services</h2>
 
-                    <?php if (isset($settings) && trim($settings->desc)!=""): ?>
-                        <h3 class="section-subheading text-muted"><?= $settings->desc ?></h3>
-                    <?php endif; ?>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
             <div class="row text-center">

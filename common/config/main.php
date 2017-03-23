@@ -13,4 +13,9 @@ return [
             'showScriptName' => false,
         ],
     ],
+    'aliases' => [
+        '@upweb' =>'/uploads',
+    ],
+
+
 ];

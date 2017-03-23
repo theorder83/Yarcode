@@ -1,16 +1,12 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
+use common\models\Service;
+
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
-use frontend\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 
 /**
@@ -67,7 +63,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $services = Service::find()->orderBy('position')->onCondition(['visible' => 1])->all();
+
+        return $this->render('index',[
+            'services' => $services,
+        ]);
     }
 
 }

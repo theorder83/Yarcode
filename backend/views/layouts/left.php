@@ -45,7 +45,7 @@
                             ['label' => 'Project', 'icon' => 'fa fa-briefcase', 'url' => ['/project/index'],],
                             ['label' => 'About', 'icon' => 'fa fa-clock-o', 'url' => ['/about/index'],],
                             ['label' => 'Team', 'icon' => 'fa fa-users', 'url' => ['/team/index'],],
-                            ['label' => 'Clients', 'icon' => 'fa fa-smile-o', 'url' => ['/client/index'],],
+                            ['label' => 'Clients', 'icon' => 'fa fa-smile-o', 'url' => ['/clients/index'],],
                         ],
                     ],
                     ['label' => 'Settings', 'icon' => 'fa fa-cogs', 'url' => ['block-settings/index']],
