@@ -7,18 +7,19 @@ use backend\controllers\actions\MoveAction;
 use backend\controllers\actions\ToggleVisibleAction;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use yii\imagine\Image;
+
 use Yii;
-use common\models\Clients;
+use common\models\Team;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-use yii\imagine\Image;
 
 /**
- * ClientsController implements the CRUD actions for Clients model.
+ * TeamController implements the CRUD actions for Team model.
  */
-class ClientsController extends Controller
+class TeamController extends Controller
 {
     /**
      * @inheritdoc
@@ -35,31 +36,29 @@ class ClientsController extends Controller
         ];
     }
 
-    /**
-     * @return array
-     */
     public function actions()
     {
         return [
             'move' => [
                 'class' => MoveAction::className(),
-                'model_class' => Clients::className(),
+                'model_class' => Team::className(),
             ],
             'toggle-visible' => [
                 'class' => ToggleVisibleAction::className(),
-                'model_class' => Clients::className(),
+                'model_class' => Team::className(),
             ],
         ];
     }
 
+
     /**
-     * Lists all Clients models.
+     * Lists all Team models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Clients::find()->orderBy("position"),
+            'query' => Team::find()->orderBy("position"),
             'sort' => false,
         ]);
 
@@ -69,7 +68,7 @@ class ClientsController extends Controller
     }
 
     /**
-     * Displays a single Clients model.
+     * Displays a single Team model.
      * @param integer $id
      * @return mixed
      */
@@ -81,13 +80,11 @@ class ClientsController extends Controller
     }
 
     /**
-     * Creates a new Clients model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Clients();
+        $model = new Team();
 
         if ($model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'file');
@@ -104,7 +101,7 @@ class ClientsController extends Controller
                     $model->file = $fileName;
                     $model->image = $fileName;
 
-                    $size = new Box(200, 50);
+                    $size = new Box(250, 250);
                     $mode = ImageInterface::THUMBNAIL_OUTBOUND;
 
                     $photo = Image::getImagine()->open($dir . $fileName);
@@ -125,10 +122,8 @@ class ClientsController extends Controller
     }
 
     /**
-     * Updates an existing Clients model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string|\yii\web\Response
      */
     public function actionUpdate($id)
     {
@@ -141,7 +136,7 @@ class ClientsController extends Controller
                 $model->file = $file;
                 if ($model->validate(['file'])) {
 
-                    $dir = Yii::getAlias('@uploads/clients/');
+                    $dir = Yii::getAlias('@uploads/images/');
                     Yii::$app->controller->createDirectory($dir);
 
                     if ($model->image != null && file_exists(Yii::getAlias($dir . $model->image))) {
@@ -154,7 +149,7 @@ class ClientsController extends Controller
                         $model->file = $fileName;
                         $model->image = $fileName;
 
-                        $size = new Box(200, 50);
+                        $size = new Box(250, 250);
                         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
 
                         $photo = Image::getImagine()->open($dir . $fileName);
@@ -175,7 +170,7 @@ class ClientsController extends Controller
     }
 
     /**
-     * Deletes an existing Clients model.
+     * Deletes an existing Team model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -188,15 +183,15 @@ class ClientsController extends Controller
     }
 
     /**
-     * Finds the Clients model based on its primary key value.
+     * Finds the Team model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Clients the loaded model
+     * @return Team the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Clients::findOne($id)) !== null) {
+        if (($model = Team::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

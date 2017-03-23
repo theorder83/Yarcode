@@ -34,3 +34,7 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+!/uploads/images/default_client.jpg
+!/uploads/images/default_team.png
+!/uploads/images/default_clients.jpg
+!/uploads/images/default_team.jpg
