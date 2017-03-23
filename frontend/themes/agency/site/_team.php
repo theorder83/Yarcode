@@ -1,4 +1,5 @@
-    <!-- Team Section -->
+<?php if (isset($team) && count($team)): ?>
+<!-- Team Section -->
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -8,51 +9,28 @@
                 </div>
             </div>
             <div class="row">
+                <?php /** @var  $client \common\models\Team */ foreach ($team as $person): ?>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="<?=$directoryAsset;?>/img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <img src="<?= $person->getImageUrl() ?>" class="img-responsive img-circle" alt="">
+                        <h4><?= $person->name ?></h4>
+                        <p class="text-muted"><?= $person->profession ?></p>
+                        <?php if ($person->link_facebook || $person->link_twitter || $person->link_linkedin ): ?>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
+                            <?php if ($person->link_twitter ): ?>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <?php endif; ?>
+                            <?php if ($person->link_linkedin ): ?>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <?php endif; ?>
+                            <?php if ($person->link_facebook ): ?>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <?php endif; ?>
                         </ul>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="<?=$directoryAsset;?>/img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="<?=$directoryAsset;?>/img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -61,3 +39,4 @@
             </div>
         </div>
     </section>
+<?php endif; ?>

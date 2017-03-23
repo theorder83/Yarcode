@@ -4,6 +4,9 @@ namespace frontend\controllers;
 use common\models\Clients;
 use common\models\Service;
 
+use common\models\Team;
+use frontend\models\ContactForm;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -66,11 +69,30 @@ class SiteController extends Controller
     {
         $services = Service::find()->orderBy('position')->onCondition(['visible' => 1])->all();
         $clients = Clients::find()->orderBy('position')->onCondition(['visible' => 1])->all();
+        $team = Team::find()->orderBy('position')->onCondition(['visible' => 1])->all();
 
-        return $this->render('index',[
+        return $this->render('index', [
             'services' => $services,
             'clients' => $clients,
+            'team' => $team,
         ]);
+    }
+
+
+    public function actionMail()
+    {
+        $model = new ContactForm();
+
+        $model->load(\Yii::$app->request->post(), 'mail');
+
+        var_dump($model);
+        die();
+
+        if ($model->load(\Yii::$app->request->post()) && $model->contact()) {
+
+        } else {
+            throw new BadRequestHttpException();
+        }
     }
 
 }
