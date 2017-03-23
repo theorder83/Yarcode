@@ -16,6 +16,15 @@ class ContactForm extends Model
 {
     public $name, $email, $message, $phone;
 
+
+    public function rules()
+    {
+        return [
+            [ ['name', 'email', 'message', 'phone'], 'required'],
+            ['email', 'email'],
+        ];
+    }
+
     public function contact()
     {
         if ($this->validate()) {

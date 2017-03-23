@@ -83,12 +83,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
 
-        $model->load(\Yii::$app->request->post(), 'mail');
-
-        var_dump($model);
-        die();
-
-        if ($model->load(\Yii::$app->request->post()) && $model->contact()) {
+        if ($model->load(\Yii::$app->request->post(), '') && $model->contact()) {
 
         } else {
             throw new BadRequestHttpException();
