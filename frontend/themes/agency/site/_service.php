@@ -22,13 +22,6 @@
                 </div>
                <?php endforeach; ?>
             </div>
-            <?php if (isset($settings) && trim($settings->head)!=""): ?>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted"><?= $settings->sub ?></p>
-                </div>
-            </div>
-            <?php endif; ?>
         </div>
     </section>
 <?php endif; ?>

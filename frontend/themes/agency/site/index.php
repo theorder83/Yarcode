@@ -9,7 +9,6 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/themes/age
 
 
 <!-- Header -->
-
 <header>
     <div class="container">
         <div class="intro-text">
@@ -23,6 +22,6 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/themes/age
 <?= $this->render('_portfolio.php', ['directoryAsset' => $directoryAsset]) ?>
 <?= $this->render('_about.php', ['directoryAsset' => $directoryAsset]) ?>
 <?= $this->render('_team.php', ['directoryAsset' => $directoryAsset]) ?>
-<?= $this->render('_client.php', ['directoryAsset' => $directoryAsset]) ?>
+<?= $this->render('_client.php', ['directoryAsset' => $directoryAsset, 'clients' => $clients]) ?>
 <?= $this->render('_contact.php', ['directoryAsset' => $directoryAsset]) ?>
     

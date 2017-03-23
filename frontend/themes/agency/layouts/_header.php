@@ -8,10 +8,6 @@
 
 <?php
 
-    /** @var  $blocks \yii\db\ActiveQuery */
-    /** @var  $settings \backend\models\BlockSettings */
-    //$settings = $blocks->where(['name'=>'Service'])->one();
-
 
     NavBar::begin([
         'brandLabel' => 'Yii 2 Learning',

@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Clients;
 use common\models\Service;
 
 use yii\web\Controller;
@@ -64,9 +65,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $services = Service::find()->orderBy('position')->onCondition(['visible' => 1])->all();
+        $clients = Clients::find()->orderBy('position')->onCondition(['visible' => 1])->all();
 
         return $this->render('index',[
             'services' => $services,
+            'clients' => $clients,
         ]);
     }
 

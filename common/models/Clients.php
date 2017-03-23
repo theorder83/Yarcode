@@ -70,6 +70,6 @@ class Clients extends ActiveRecord
             return \Yii::getAlias('@upweb/images/clients/') . $this->image;
         }
 
-        return '@upweb/images/clients/' . 'default_client.jpg';
+        return \Yii::getAlias('@upweb/images/clients/') . 'default_client.jpg';
     }
 }

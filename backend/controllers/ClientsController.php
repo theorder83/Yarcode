@@ -144,7 +144,7 @@ class ClientsController extends Controller
                     $dir = Yii::getAlias('@uploads/images/clients/');
                     Yii::$app->controller->createDirectory($dir);
 
-                    if (file_exists(Yii::getAlias($dir . $model->image))) {
+                    if ($model->image != null && file_exists(Yii::getAlias($dir . $model->image))) {
                         unlink(Yii::getAlias(Yii::getAlias($dir . $model->image)));
                         $model->image = '';
                     }
@@ -168,15 +168,10 @@ class ClientsController extends Controller
             }
 
         } else {
-            return $this->render('create', [
+            return $this->render('update', [
                 'model' => $model,
             ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-
     }
 
     /**
