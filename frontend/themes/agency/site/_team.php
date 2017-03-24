@@ -18,13 +18,13 @@
                         <?php if ($person->link_facebook || $person->link_twitter || $person->link_linkedin ): ?>
                         <ul class="list-inline social-buttons">
                             <?php if ($person->link_twitter ): ?>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="//twitter.com/<?= $person->link_twitter ?> "><i class="fa fa-twitter"></i></a></li>
                             <?php endif; ?>
                             <?php if ($person->link_linkedin ): ?>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="//linkedin.com/<?= $person->link_linkedin ?> "><i class="fa fa-linkedin"></i></a></li>
                             <?php endif; ?>
                             <?php if ($person->link_facebook ): ?>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="//facebook.com/<?= $person->link_facebook ?> "><i class="fa fa-facebook"></i></a></li>
                             <?php endif; ?>
                         </ul>
                         <?php endif; ?>
