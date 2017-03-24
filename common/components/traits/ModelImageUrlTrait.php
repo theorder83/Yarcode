@@ -18,7 +18,6 @@ trait ModelImageUrlTrait
         if ($this->image != null && file_exists(\Yii::getAlias('@uploads/images/') . $this->image)) {
             return \Yii::getAlias('@upweb/images/') . $this->image;
         }
-
         return \Yii::getAlias('@upweb/images/') . 'default_'.static::tableName().'.jpg';
     }
 
