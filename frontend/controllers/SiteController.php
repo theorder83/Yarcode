@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\About;
 use common\models\Clients;
 use common\models\Service;
 
@@ -70,11 +71,13 @@ class SiteController extends Controller
         $services = Service::find()->orderBy('position')->onCondition(['visible' => 1])->all();
         $clients = Clients::find()->orderBy('position')->onCondition(['visible' => 1])->all();
         $team = Team::find()->orderBy('position')->onCondition(['visible' => 1])->all();
+        $about = About::find()->orderBy('position')->onCondition(['visible' => 1])->all();
 
         return $this->render('index', [
             'services' => $services,
             'clients' => $clients,
             'team' => $team,
+            'about' => $about,
         ]);
     }
 

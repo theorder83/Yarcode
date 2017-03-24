@@ -36,3 +36,4 @@ phpunit.phar
 /.vagrant
 !/uploads/images/default_clients.jpg
 !/uploads/images/default_team.jpg
+!/uploads/images/default_about.jpg
