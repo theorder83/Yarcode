@@ -37,3 +37,4 @@ phpunit.phar
 !/uploads/images/default_clients.jpg
 !/uploads/images/default_team.jpg
 !/uploads/images/default_about.jpg
+!/uploads/images/default_project.jpg

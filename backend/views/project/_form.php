@@ -12,6 +12,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'file_preview')->fileInput() ?>
+
+    <?= Html::img($model->getImageUrl('preview'), ['class'=>'img-responsive','style'=>'max-width:300px;']) ?>
+
+    <?= $form->field($model, 'file_image')->fileInput() ?>
+
+    <?= Html::img($model->getImageUrl(), ['class'=>'img-responsive','style'=>'max-width:300px;']) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
@@ -37,13 +45,7 @@ use yii\widgets\ActiveForm;
         ]
     ]);; ?>
 
-    <?= $form->field($model, 'file_preview')->fileInput() ?>
-
-    <?= $form->field($model, 'file_image')->fileInput() ?>
-
-
-
-
+    <br/>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

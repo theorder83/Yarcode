@@ -33,8 +33,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description_title:ntext',
             'text:html',
-            'preview:ntext',
-            'image:ntext',
+            [
+                'attribute' => 'Preview',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img($data->getImageUrl('preview'),['style'=>'max-width:300px;']);
+                },
+            ],
+            [
+                'attribute' => 'Image',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img($data->getImageUrl(),['style'=>'max-width:300px;']);
+                },
+            ],
         ],
     ]) ?>
 
