@@ -11,12 +11,13 @@ namespace common\components\traits;
 trait ModelImageUrlTrait
 {
     /**
-     * @return mixed
+     * @param string $image_field
+     * @return string
      */
-    public function getImageUrl()
+    public function getImageUrl($image_field='image')
     {
-        if ($this->image != null && file_exists(\Yii::getAlias('@uploads/images/') . $this->image)) {
-            return \Yii::getAlias('@upweb/images/') . $this->image;
+        if ($this->$image_field != null && file_exists(\Yii::getAlias('@uploads/images/') . $this->$image_field)) {
+            return \Yii::getAlias('@upweb/images/') . $this->$image_field;
         }
         return \Yii::getAlias('@upweb/images/') . 'default_'.static::tableName().'.jpg';
     }
