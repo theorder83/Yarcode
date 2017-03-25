@@ -46,9 +46,11 @@ class About extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'image'], 'string'],
+            [['event','description','time'],'required'],
+            [['description'], 'string'],
             [['position', 'visible'], 'integer'],
             [['time', 'event'], 'string', 'max' => 256],
+            [['file'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 

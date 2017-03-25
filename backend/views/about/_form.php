@@ -18,11 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'image')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'visible')->textInput() ?>
+    <?= $form->field($model, 'file')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

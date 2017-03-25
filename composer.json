@@ -22,7 +22,8 @@
         "dmstr/yii2-adminlte-asset": "2.*",
         "sjaakp/yii2-symbol-picker": "*",
         "costa-rico/yii2-images": "dev-master",
-        "yiisoft/yii2-imagine": "^2.1"
+        "yiisoft/yii2-imagine": "^2.1",
+        "yii-dream-team/yii2-upload-behavior": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

@@ -2,14 +2,18 @@
 
 namespace backend\controllers;
 
+use backend\components\Controller;
 use backend\controllers\actions\MoveAction;
 use backend\controllers\actions\ToggleVisibleAction;
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+use yii\imagine\Image;
 use Yii;
 use common\models\About;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * AboutController implements the CRUD actions for About model.
@@ -77,7 +81,7 @@ class AboutController extends Controller
     }
 
     /**
-     * Creates a new About model.
+     * Creates a new Clients model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -85,17 +89,43 @@ class AboutController extends Controller
     {
         $model = new About();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'file');
+
+            if ($file && $file->tempName) {
+                $model->file = $file;
+                if ($model->validate(['file'])) {
+
+                    $dir = Yii::getAlias('@uploads/images/');
+                    Yii::$app->controller->createDirectory($dir);
+
+                    $fileName = Yii::$app->security->generateRandomString() . '.' . $model->file->extension;
+                    $model->file->saveAs($dir . $fileName);
+                    $model->file = $fileName;
+                    $model->image = $fileName;
+
+                    $size = new Box(200, 200);
+                    $mode = ImageInterface::THUMBNAIL_OUTBOUND;
+
+                    $photo = Image::getImagine()->open($dir . $fileName);
+                    $photo->thumbnail($size, $mode)->save($dir . $fileName, ['quality' => 100]);
+                }
+            }
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+
     }
 
     /**
-     * Updates an existing About model.
+     * Updates an existing Clients model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,8 +134,39 @@ class AboutController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'file');
+
+            if ($file && $file->tempName) {
+                $model->file = $file;
+                if ($model->validate(['file'])) {
+
+                    $dir = Yii::getAlias('@uploads/clients/');
+                    Yii::$app->controller->createDirectory($dir);
+
+                    if ($model->image != null && file_exists(Yii::getAlias($dir . $model->image))) {
+                        unlink(Yii::getAlias(Yii::getAlias($dir . $model->image)));
+                        $model->image = '';
+                    }
+
+                    $fileName = Yii::$app->security->generateRandomString() . '.' . $model->file->extension;
+                    if ($model->file->saveAs($dir . $fileName)) {
+                        $model->file = $fileName;
+                        $model->image = $fileName;
+
+                        $size = new Box(200, 200);
+                        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
+
+                        $photo = Image::getImagine()->open($dir . $fileName);
+                        $photo->thumbnail($size, $mode)->save($dir . $fileName, ['quality' => 100]);
+                    }
+                }
+            }
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         } else {
             return $this->render('update', [
                 'model' => $model,

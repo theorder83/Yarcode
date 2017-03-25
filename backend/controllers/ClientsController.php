@@ -141,7 +141,7 @@ class ClientsController extends Controller
                 $model->file = $file;
                 if ($model->validate(['file'])) {
 
-                    $dir = Yii::getAlias('@uploads/clients/');
+                    $dir = Yii::getAlias('@uploads/images/');
                     Yii::$app->controller->createDirectory($dir);
 
                     if ($model->image != null && file_exists(Yii::getAlias($dir . $model->image))) {

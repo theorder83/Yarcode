@@ -1,8 +1,8 @@
 <!-- Navigation -->
 <?php
 
-   use yii\bootstrap\Nav;
-   use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
 
 ?>
 
@@ -24,7 +24,7 @@
 
     echo Nav::widget([
         'options' => [
-                'class' => 'nav navbar-nav navbar-right',
+            'class' => 'nav navbar-nav navbar-right',
         ],
         'items' => [
                ['label' => 'Services', 'url' =>'#services','linkOptions'=>['class'=>'page-scroll']],
