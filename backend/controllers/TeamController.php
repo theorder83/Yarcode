@@ -7,6 +7,8 @@ use backend\controllers\actions\MoveAction;
 use backend\controllers\actions\ToggleVisibleAction;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\imagine\Image;
 
 use Yii;
@@ -26,15 +28,35 @@ class TeamController extends Controller
      */
     public function behaviors()
     {
-        return [
+        return ArrayHelper::merge(parent::behaviors(), [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [
+                            'move',
+                            'toggle-visible',
+                            'index',
+                            'view',
+                            'create',
+                            'update',
+                            'find',
+                            'delete'
+                        ],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
     }
+
 
     public function actions()
     {

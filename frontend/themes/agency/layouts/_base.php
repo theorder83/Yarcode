@@ -6,6 +6,13 @@ use yii\helpers\Html;
 
 \frontend\assets\AppAsset::register($this);
 
+$settings = Yii::$app->settings;
+$settings->clearCache();
+
+$metaDescription = $settings->get('Settings.metaDescription');
+$metaKeywords = $settings->get('Settings.metaKeywords');
+$this->title = $settings->get('Settings.siteTitle');
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -13,6 +20,8 @@ use yii\helpers\Html;
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>

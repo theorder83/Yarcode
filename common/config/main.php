@@ -12,6 +12,16 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
+        'settings' => [
+            'class' => 'pheme\settings\components\Settings',
+        ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource'
+                ],
+            ],
+        ],
     ],
     'aliases' => [
         '@upweb' =>'/uploads',

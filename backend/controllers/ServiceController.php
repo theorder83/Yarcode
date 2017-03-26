@@ -7,6 +7,8 @@ use backend\controllers\actions\ToggleVisibleAction;
 use Yii;
 use common\models\Service;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,14 +24,33 @@ class ServiceController extends Controller
      */
     public function behaviors()
     {
-        return [
+        return ArrayHelper::merge(parent::behaviors(), [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [
+                            'move',
+                            'toggle-visible',
+                            'index',
+                            'view',
+                            'create',
+                            'update',
+                            'find',
+                            'delete'
+                        ],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
     }
 
     /**

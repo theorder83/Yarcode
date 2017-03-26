@@ -22,4 +22,14 @@ return [
         ],
     ],
     'params' => $params,
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'fishvision\migrate\controllers\MigrateController',
+            'autoDiscover' => true,
+            'migrationPaths' => [
+                '@vendor/pheme/yii2-settings/migrations',
+            ],
+        ],
+    ],
+
 ];

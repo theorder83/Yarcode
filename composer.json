@@ -24,7 +24,9 @@
         "costa-rico/yii2-images": "dev-master",
         "yiisoft/yii2-imagine": "^2.1",
         "yii-dream-team/yii2-upload-behavior": "*",
-        "froala/yii2-froala-editor": "*"
+        "froala/yii2-froala-editor": "*",
+        "pheme/yii2-settings": "*",
+        "fishvision/yii2-migrate": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

@@ -33,9 +33,8 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Main menu', 'options' => ['class' => 'header']],
-                    ['label' => 'Home', 'icon' => 'fa fa-file-code-o', 'url' => ['site/index']],
                     ['label' => 'Site management', 'options' => ['class' => 'header']],
+                    ['label' => 'Settings', 'icon' => 'fa fa-cogs', 'url' => ['site/site-settings']],
                     [
                         'label' => 'Content',
                         'icon' => 'fa fa-folder-open',
@@ -48,8 +47,6 @@
                             ['label' => 'Clients', 'icon' => 'fa fa-smile-o', 'url' => ['/clients/index'],],
                         ],
                     ],
-                    ['label' => 'Settings', 'icon' => 'fa fa-cogs', 'url' => ['block-settings/index']],
-                    ['label' => 'Static pages', 'icon' => 'fa fa-file-o', 'url' => ['/debug']],
                     ['label' => 'User settings', 'options' => ['class' => 'header']],
                     ['label' => 'Change password', 'icon' => 'fa fa-lock', 'url' => ['/profile/change-password']],
                 ],

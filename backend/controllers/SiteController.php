@@ -27,7 +27,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','site-settings'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -51,6 +51,13 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'site-settings' => [
+                'class' => 'pheme\settings\SettingsAction',
+                'modelClass' => 'common\models\Settings',
+                //'scenario' => 'site',	// Change if you want to re-use the model for multiple setting form.
+                'viewName' => 'site-settings'	// The form we need to render
+
+            ],
         ];
     }
 
@@ -61,7 +68,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //return $this->render('index');
+        return $this->redirect(['site/site-settings']);
     }
 
     /**

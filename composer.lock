@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b5eb41accf5f25854e2f59aa88a9b46",
+    "content-hash": "67d3e7d80782ddb8c75ef9a91c3d70a6",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -691,6 +691,46 @@
             "time": "2017-03-13T06:30:53+00:00"
         },
         {
+            "name": "fishvision/yii2-migrate",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fishvision/yii2-migrate.git",
+                "reference": "0b3e19a66bc56a9dd45b627e56b0d6f2804bf1be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fishvision/yii2-migrate/zipball/0b3e19a66bc56a9dd45b627e56b0d6f2804bf1be",
+                "reference": "0b3e19a66bc56a9dd45b627e56b0d6f2804bf1be",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "fishvision\\migrate\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Berriman",
+                    "email": "alexb@fishvision.com"
+                }
+            ],
+            "description": "Extended migration support",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2016-04-03T22:26:04+00:00"
+        },
+        {
             "name": "fortawesome/font-awesome",
             "version": "v4.7.0",
             "source": {
@@ -1104,6 +1144,90 @@
                 "time"
             ],
             "time": "2017-02-06 22:02:47"
+        },
+        {
+            "name": "pheme/yii2-settings",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phemellc/yii2-settings.git",
+                "reference": "3cbbd8ffb0dfe6733cf21b9235d75e8470f986ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phemellc/yii2-settings/zipball/3cbbd8ffb0dfe6733cf21b9235d75e8470f986ce",
+                "reference": "3cbbd8ffb0dfe6733cf21b9235d75e8470f986ce",
+                "shasum": ""
+            },
+            "require": {
+                "pheme/yii2-toggle-column": "*",
+                "yiisoft/yii2": ">=2.0.6"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "pheme\\settings\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aris Karageorgos",
+                    "email": "aris@phe.me"
+                }
+            ],
+            "description": "Yii2 Database settings",
+            "keywords": [
+                "Settings",
+                "config",
+                "yii2"
+            ],
+            "time": "2017-03-21T13:52:54+00:00"
+        },
+        {
+            "name": "pheme/yii2-toggle-column",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phemellc/yii2-toggle-column.git",
+                "reference": "a3f7badb43d968d1abe60964f6158a0adf70f145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phemellc/yii2-toggle-column/zipball/a3f7badb43d968d1abe60964f6158a0adf70f145",
+                "reference": "a3f7badb43d968d1abe60964f6158a0adf70f145",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": ">=2.0.7"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "\\pheme\\grid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aris Karageorgos",
+                    "email": "aris@phe.me"
+                }
+            ],
+            "description": "Provides a toggle data column and action",
+            "keywords": [
+                "column",
+                "extension",
+                "toggle",
+                "yii2"
+            ],
+            "time": "2017-01-17T18:44:09+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",

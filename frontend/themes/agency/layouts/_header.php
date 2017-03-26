@@ -4,13 +4,16 @@
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 
+$settings = Yii::$app->settings;
+$siteName = $settings->get('Settings.siteName');
+
 ?>
 
 <?php
 
 
     NavBar::begin([
-        'brandLabel' => 'Yii 2 Learning',
+        'brandLabel' => $siteName,
         'brandUrl' => '#page-top',
         'brandOptions'=>[
             'class'=>'navbar-header page-scroll',
