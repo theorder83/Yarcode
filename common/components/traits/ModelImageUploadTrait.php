@@ -72,7 +72,7 @@ trait ModelImageUploadTrait
         if ($this->$image_field != null && file_exists(\Yii::getAlias('@uploads/images/') . $this->$image_field)) {
             return \Yii::getAlias('@upweb/images/') . $this->$image_field;
         }
-        return \Yii::getAlias('@upweb/images/') . 'default_'.static::tableName().'.jpg';
+        return \Yii::getAlias('@upweb/static/') . 'default_'.static::tableName().'.jpg';
     }
 
 }
