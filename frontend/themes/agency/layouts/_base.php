@@ -20,7 +20,8 @@ $this->title = $settings->get('Settings.siteTitle');
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="<?= $metaDescription ?>" />
+    <meta name="keywords" content="<?= $metaKeywords ?>" />
 
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
