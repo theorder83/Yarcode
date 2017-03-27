@@ -114,7 +114,7 @@ class ProjectController extends Controller
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', ['model' => $model]);
+            return $this->render('create', ['model' => $model]);
         }
     }
 

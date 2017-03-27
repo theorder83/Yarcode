@@ -5,7 +5,7 @@ namespace common\models;
 
 use common\components\ActiveRecord;
 use common\components\behaviors\ModelPositionBehavior;
-use common\components\traits\ModelImageUrlTrait;
+use common\components\traits\ModelImageUploadTrait;
 use common\components\traits\ModelVisibleTrait;
 
 /**
@@ -20,7 +20,8 @@ class Clients extends ActiveRecord
     public $file;
 
     use ModelVisibleTrait;
-    use ModelImageUrlTrait;
+    use ModelImageUploadTrait;
+
 
     public function behaviors()
     {

@@ -110,37 +110,12 @@ class ClientsController extends Controller
     {
         $model = new Clients();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $file = UploadedFile::getInstance($model, 'file');
-
-            if ($file && $file->tempName) {
-                $model->file = $file;
-                if ($model->validate(['file'])) {
-
-                    $dir = Yii::getAlias('@uploads/images/');
-                    Yii::$app->controller->createDirectory($dir);
-
-                    $fileName = Yii::$app->security->generateRandomString() . '.' . $model->file->extension;
-                    $model->file->saveAs($dir . $fileName);
-                    $model->file = $fileName;
-                    $model->image = $fileName;
-
-                    $size = new Box(200, 50);
-                    $mode = ImageInterface::THUMBNAIL_OUTBOUND;
-
-                    $photo = Image::getImagine()->open($dir . $fileName);
-                    $photo->thumbnail($size, $mode)->save($dir . $fileName, ['quality' => 100]);
-                }
-            }
-
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->saveImage(Yii::getAlias('@uploads/images/'), 'file', 'image', 200, 50);
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->render('create', ['model' => $model]);
         }
 
     }
@@ -155,43 +130,12 @@ class ClientsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            $file = UploadedFile::getInstance($model, 'file');
-
-            if ($file && $file->tempName) {
-                $model->file = $file;
-                if ($model->validate(['file'])) {
-
-                    $dir = Yii::getAlias('@uploads/images/');
-                    Yii::$app->controller->createDirectory($dir);
-
-                    if ($model->image != null && file_exists(Yii::getAlias($dir . $model->image))) {
-                        unlink(Yii::getAlias(Yii::getAlias($dir . $model->image)));
-                        $model->image = '';
-                    }
-
-                    $fileName = Yii::$app->security->generateRandomString() . '.' . $model->file->extension;
-                    if ($model->file->saveAs($dir . $fileName)) {
-                        $model->file = $fileName;
-                        $model->image = $fileName;
-
-                        $size = new Box(200, 50);
-                        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
-
-                        $photo = Image::getImagine()->open($dir . $fileName);
-                        $photo->thumbnail($size, $mode)->save($dir . $fileName, ['quality' => 100]);
-                    }
-                }
-            }
-
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->saveImage(Yii::getAlias('@uploads/images/'), 'file', 'image', 200, 50);
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->render('update', ['model' => $model]);
         }
     }
 

@@ -4,13 +4,9 @@ namespace common\models;
 
 use common\components\ActiveRecord;
 use common\components\behaviors\ModelPositionBehavior;
+use common\components\traits\ModelImageUploadTrait;
 use common\components\traits\ModelImageUrlTrait;
 use common\components\traits\ModelVisibleTrait;
-use Imagine\Image\Box;
-use Imagine\Image\ImageInterface;
-use Yii;
-use yii\imagine\Image;
-use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "project".
@@ -32,7 +28,7 @@ class Project extends ActiveRecord
     public $file_image;
 
     use ModelVisibleTrait;
-    use ModelImageUrlTrait;
+    use ModelImageUploadTrait;
 
     public function behaviors()
     {
@@ -81,43 +77,6 @@ class Project extends ActiveRecord
             'file_preview' => 'Preview',
             'file_image' => 'Image',
         ];
-    }
-
-
-    public function saveImage($path, $field_file, $field_image, $width, $height)
-    {
-        if (!isset($this->$field_file) ) {
-            return true;
-        }
-
-        $file = UploadedFile::getInstance($this, $field_file);
-
-        if ($file && $file->tempName) {
-            $this->$field_file = $file;
-
-            if ($this->validate([$field_file])) {
-
-                if ($this->$field_image != null && file_exists(Yii::getAlias($path . $this->$field_image))) {
-                    unlink(Yii::getAlias($path . $this->$field_image));
-                    $this->$field_image = '';
-                }
-
-                $fileName = Yii::$app->security->generateRandomString() . '.' . $this->$field_file->extension;
-                if ($this->$field_file->saveAs($path . $fileName)) {
-                    $this->$field_file = $fileName;
-                    $this->$field_image = $fileName;
-
-                    $size = new Box($width, $height);
-                    $mode = ImageInterface::THUMBNAIL_OUTBOUND;
-
-                    $photo = Image::getImagine()->open($path . $fileName);
-                    $photo->thumbnail($size, $mode)->save($path . $fileName, ['quality' => 100]);
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     public function afterDelete()

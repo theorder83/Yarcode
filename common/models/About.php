@@ -3,7 +3,7 @@
 namespace common\models;
 
 use common\components\behaviors\ModelPositionBehavior;
-use common\components\traits\ModelImageUrlTrait;
+use common\components\traits\ModelImageUploadTrait;
 use common\components\traits\ModelVisibleTrait;
 use Yii;
 
@@ -23,7 +23,7 @@ class About extends \yii\db\ActiveRecord
     public $file;
 
     use ModelVisibleTrait;
-    use ModelImageUrlTrait;
+    use ModelImageUploadTrait;
 
     public function behaviors()
     {
